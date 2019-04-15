@@ -71,6 +71,8 @@
 								<li class="tsd-kind-variable"><a href="globals.html#filename" class="tsd-kind-icon">FILENAME</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#filename_re" class="tsd-kind-icon">FILENAME_<wbr>RE</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#typename_re" class="tsd-kind-icon">TYPENAME_<wbr>RE</a></li>
+								<li class="tsd-kind-variable"><a href="globals.html#inspect" class="tsd-kind-icon">inspect</a></li>
+								<li class="tsd-kind-variable"><a href="globals.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a></li>
 								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#options" class="tsd-kind-icon">options</a></li>
 							</ul>
 						</section>
@@ -80,7 +82,10 @@
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#convertconfigtocompileroptions" class="tsd-kind-icon">convert<wbr>Config<wbr>ToCompiler<wbr>Options</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#createinlineprogram" class="tsd-kind-icon">create<wbr>Inline<wbr>Program</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a></li>
-								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#inspectcore" class="tsd-kind-icon">inspect<wbr>Core</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#inspectobjectcore" class="tsd-kind-icon">inspect<wbr>Object<wbr>Core</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#inspectobjectwithpreamble" class="tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#inspectwithpreamble" class="tsd-kind-icon">inspect<wbr>With<wbr>Preamble</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#setoptions" class="tsd-kind-icon">set<wbr>Options</a></li>
 							</ul>
 						</section>
@@ -95,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">FILENAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"__ts-type-test-inline-e1d70ff1__"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;__ts-type-test-inline-e1d70ff1__&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/program.ts#L4">program.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/program.ts#L4">program.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -105,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">FILENAME_<wbr>RE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;new RegExp(FILENAME)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/program.ts#L5">program.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/program.ts#L5">program.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -115,7 +120,27 @@
 					<div class="tsd-signature tsd-kind-icon">TYPENAME_<wbr>RE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/type\s+(__[a-zA-Z0-9][_a-zA-Z0-9]*)[^_a-zA-Z0-9]+/g</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/program.ts#L6">program.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/program.ts#L6">program.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="inspect" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect</h3>
+					<div class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;inspectWithPreamble(&#x27;&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L61">inspect.ts:61</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="inspectobject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object</h3>
+					<div class="tsd-signature tsd-kind-icon">inspect<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;inspectObjectWithPreamble(&#x27;&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L60">inspect.ts:60</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompilerOptions</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/options.ts#L7">options.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/options.ts#L7">options.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,7 +172,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/options.ts#L12">options.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/options.ts#L12">options.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -182,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/program.ts#L8">program.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/program.ts#L8">program.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -213,7 +238,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/options.ts#L72">options.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/options.ts#L72">options.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,17 +250,43 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
-					<a name="inspectobject" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">inspect<wbr>Object&lt;T&gt;<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, typeMap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="inspectcore" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Core</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">inspect<wbr>Core<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/inspect.ts#L4">inspect.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L51">inspect.ts:51</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>preamble: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>type: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="inspectobjectcore" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object<wbr>Core</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">inspect<wbr>Object<wbr>Core&lt;T&gt;<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, typeMap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L4">inspect.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -259,6 +310,58 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="inspectobjectwithpreamble" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object<wbr>With<wbr>Preamble</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble&lt;T&gt;<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L54">inspect.ts:54</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>preamble: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="inspectwithpreamble" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>With<wbr>Preamble</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">inspect<wbr>With<wbr>Preamble<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/inspect.ts#L57">inspect.ts:57</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>preamble: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="setoptions" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Options</h3>
@@ -269,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/55c6837/src/lib/options.ts#L43">options.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/0142266/src/lib/options.ts#L43">options.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -323,6 +426,12 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#typename_re" class="tsd-kind-icon">TYPENAME_<wbr>RE</a>
 					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#inspect" class="tsd-kind-icon">inspect</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#options" class="tsd-kind-icon">options</a>
 					</li>
@@ -335,8 +444,17 @@
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a>
 					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#inspectcore" class="tsd-kind-icon">inspect<wbr>Core</a>
+					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a>
+						<a href="globals.html#inspectobjectcore" class="tsd-kind-icon">inspect<wbr>Object<wbr>Core</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#inspectobjectwithpreamble" class="tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#inspectwithpreamble" class="tsd-kind-icon">inspect<wbr>With<wbr>Preamble</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#setoptions" class="tsd-kind-icon">set<wbr>Options</a>
