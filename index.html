@@ -74,7 +74,73 @@
 					<a href="https://david-dm.org/grissius/intspector?type=dev"><img src="https://img.shields.io/david/dev/grissius/intspector.svg?style=flat-square" alt="Dev Dependency Status"></a></p>
 					<p>Inspect your TS types as strings and integrate type testing into your favorite testing framework!</p>
 				</div>
-				<h2 id="license">License</h2>
+				<h2 id="-sparkles-motivation">:sparkles: Motivation</h2>
+				<p>When you find yourself writing a library with complex typings, you might find the urge to test your meta types, return types of your function etc.</p>
+				<p>The usual approach is assignment to a typed variable, which is a good start. But (1) it is not a test for type exact match, but for one-way type bound in type hierarchy due to inheritance, and (2) your unit test now either passes or does not compile (in case you break the typings), which is not exactly a way to go, sir.</p>
+				<p>When you are really into it, you set up <a href="https://github.com/Microsoft/dtslint"><code>dtslint</code></a>. There are lot of disadvantages from my point of view. See <em>See also</em> section lower. But if you take it seriously, the main disadvantage is that you have to spell out all the type annotations be yourself. Which means you cannot take advantage of Jest&#39;s snapshot testing for instance.</p>
+				<p>This project comes to rescue with TypeScript types to string serialization using TypeScript compiler API.</p>
+				<h2 id="-rocket-getting-started">:rocket: Getting started</h2>
+				<ol>
+					<li>Install</li>
+				</ol>
+				<pre><code class="language-bash">npm install intspector</code></pre>
+				<ol start="2">
+					<li>Start using with your project&#39;s <code>tsconfig.json</code>!</li>
+				</ol>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { inspect } <span class="hljs-keyword">from</span> <span class="hljs-string">'intspector'</span>;
+
+inspect(<span class="hljs-string">'typeof Math.random()'</span>) <span class="hljs-comment">// "number"</span></code></pre>
+				<h2 id="-monkey-api">:monkey: API</h2>
+				<h3 id="inspect-functions">Inspect functions</h3>
+				<p><code>inspect</code> inspects a single type</p>
+				<pre><code class="language-typescript">inspect(<span class="hljs-string">'Record&lt;keyof any, Array&lt;number&gt;&gt;'</span>); <span class="hljs-comment">// "{ [x: string]: number[]; [x: number]: number[]; };"</span></code></pre>
+				<p><code>inspectObject</code> inspects multiple types</p>
+				<pre><code class="language-typescript">inspectObject({a: <span class="hljs-string">'string | number'</span>, b: <span class="hljs-string">'boolean'</span>}); <span class="hljs-comment">// {a: "string | number", b: "boolean"}</span></code></pre>
+				<p><code>inspectWithPreamble</code> inspects a single type, but allows extra code to be executed beforehand</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> inspectWithFoo = inspectWithPreamble(<span class="hljs-string">'const foo = 2'</span>);
+inspectWithFoo(<span class="hljs-string">'typeof foo'</span>); <span class="hljs-comment">// "2"</span></code></pre>
+				<p><code>inspectObjectWithPreamble</code> inspects multiple types, but allows extra code to be executed beforehand</p>
+				<h3 id="options-functions">Options functions</h3>
+				<p><code>getOptions</code> to see what you are working with</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> opts = getOptions();
+<span class="hljs-comment">// opts contains current options</span></code></pre>
+				<p><code>setOptions</code> to override your project defaults</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> ts <span class="hljs-keyword">from</span> <span class="hljs-string">'typescript'</span>;
+
+<span class="hljs-keyword">const</span> opts = setOptions({ strict: <span class="hljs-literal">false</span>, <span class="hljs-keyword">module</span>: ts.ModuleKind.CommonJS });
+// opts contains current options</code></pre>
+				<h2 id="-mortar_board-advanced-usage">:mortar_board: Advanced usage</h2>
+				<p>You can self-reference your types</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> res = inspectObject({
+    a: <span class="hljs-string">'string'</span>,
+    b: <span class="hljs-string">'a | Promise&lt;a&gt;'</span>,
+});
+
+<span class="hljs-comment">// res is:</span>
+<span class="hljs-comment">// { a: "string", b: "string | Promise&lt;string&gt;" }</span></code></pre>
+				<p>You can import your types and all imports, or even put any amount of valid code into preamble.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> myInspect = inspectObjectWithPreamble(<span class="hljs-string">`
+const ans = () =&gt; 42;
+const ran = 'foo'.toUpperCase();
+type Complex = { r: number; i: number };`</span>);
+<span class="hljs-keyword">const</span> res = myInspect({
+    fooRes: <span class="hljs-string">'ReturnType&lt;typeof ans&gt;'</span>,
+    typeOfRan: <span class="hljs-string">'typeof ran'</span>,
+    real: <span class="hljs-string">"Pick&lt;Complex, 'r'&gt;"</span>,
+});
+
+<span class="hljs-comment">// res is:</span>
+<span class="hljs-comment">// { fooRes: 'number', typeOfRan: 'string', real: '{ r: number; }' }</span></code></pre>
+				<h2 id="-eyes-see-also">:eyes: See also</h2>
+				<ul>
+					<li><a href="https://github.com/paulkoerbitz/resolve-types"><code>resolve-types</code></a> - Forked from. Has some bugs fixed in this project and slightly different API. Worth cheking out.</li>
+					<li><a href="https://github.com/Microsoft/dtslint"><code>dtslint</code></a> - This is kind of a standard when testing types - it&#39;s from Microsoft and is widely used. However it uses Lint as the test runner, which is obscure. I found it kind of difficult to setup and integrate to a project and it uses TSLint, which is going to be <a href="https://github.com/palantir/tslint/issues/4534">deprecated in 2019</a>.</li>
+				</ul>
+				<h2 id="-love_letter-credits">:love_letter: Credits</h2>
+				<p>This project is a fork of <a href="https://github.com/paulkoerbitz/resolve-types">resolve-types</a>. After using the original project I reported some issues (<a href="https://github.com/paulkoerbitz/resolve-types/issues/1">#1</a>, <a href="https://github.com/paulkoerbitz/resolve-types/issues/2">#2</a>, <a href="https://github.com/paulkoerbitz/resolve-types/issues/3">#3</a>), but got no reply. The project was too special and too good to let go. So I created this fork to fix some of the issues and make the API easier to use.</p>
+				<p>Apart from the fixes, I changed a lot, but still use some of the core functions to operate the Typescript compiler and thanks to the original project I learned how to cat :cat2:.</p>
+				<p><strong>So thanks <a href="https://github.com/paulkoerbitz">paulkoerbitz</a></strong> :heart:</p>
+				<h2 id="-scroll-license">:scroll: License</h2>
 				<p>This project is licensed under <a href="./LICENSE">MIT</a>.</p>
 			</div>
 		</div>
@@ -84,52 +150,16 @@
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_inspect_.html">"inspect"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_options_.html">"options"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#filename" class="tsd-kind-icon">FILENAME</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#filename_re" class="tsd-kind-icon">FILENAME_<wbr>RE</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#typename_re" class="tsd-kind-icon">TYPENAME_<wbr>RE</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#inspect" class="tsd-kind-icon">inspect</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#options" class="tsd-kind-icon">options</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#convertconfigtocompileroptions" class="tsd-kind-icon">convert<wbr>Config<wbr>ToCompiler<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#createinlineprogram" class="tsd-kind-icon">create<wbr>Inline<wbr>Program</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#inspectcore" class="tsd-kind-icon">inspect<wbr>Core</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#inspectobjectcore" class="tsd-kind-icon">inspect<wbr>Object<wbr>Core</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#inspectobjectwithpreamble" class="tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#inspectwithpreamble" class="tsd-kind-icon">inspect<wbr>With<wbr>Preamble</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#setoptions" class="tsd-kind-icon">set<wbr>Options</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
