@@ -63,8 +63,8 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<div align="center">
-					<img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/146/sleuth-or-spy_1f575.png" />
-					<h1>In<img src="https://cdn-images-1.medium.com/max/1600/1*mn6bOs7s6Qbao15PMNRyOA.png" width=30 />pector</h1>
+					<img src="https://i.imgur.com/TmnNYOY.png" />
+					<h1>In<img src="https://i.imgur.com/ZAMzvXd.png" />pector</h1>
 					<p><a href="https://travis-ci.com/grissius/intspector"><img src="https://img.shields.io/travis/com/grissius/intspector/master.svg?style=flat-square" alt="Build Status"></a>
 						<a href="https://www.npmjs.com/package/intspector"><img src="https://img.shields.io/npm/v/intspector.svg?style=flat-square" alt="Npm"></a>
 						<a href="https://codeclimate.com/github/grissius/intspector"><img src="https://img.shields.io/codeclimate/coverage/grissius/intspector.svg?style=flat-square" alt="Coverage"></a>
@@ -93,16 +93,14 @@ inspect(<span class="hljs-string">'typeof Math.random()'</span>) <span class="hl
 				<h2 id="api">API</h2>
 				<p>See full public API typedoc <a href="https://grissius.github.io/intspector/">documentation</a>.</p>
 				<h3 id="inspect-functions">Inspect functions</h3>
-				<p><code>inspect</code> inspects a single type</p>
-				<pre><code class="language-typescript">inspect(<span class="hljs-string">'Record&lt;keyof any, Array&lt;number&gt;&gt;'</span>); <span class="hljs-comment">// "{ [x: string]: number[]; [x: number]: number[]; };"</span></code></pre>
-				<p><code>inspectObject</code> inspects multiple types</p>
-				<pre><code class="language-typescript">inspectObject({a: <span class="hljs-string">'string | number'</span>, b: <span class="hljs-string">'boolean'</span>}); <span class="hljs-comment">// {a: "string | number", b: "boolean"}</span></code></pre>
-				<p><code>inspectWithPreamble</code> inspects a single type, but allows extra code to be executed beforehand</p>
+				<p><code>inspect</code> inspects a single type or multiple types if provided an object</p>
+				<pre><code class="language-typescript">inspect(<span class="hljs-string">'Record&lt;keyof any, Array&lt;number&gt;&gt;'</span>); <span class="hljs-comment">// "{ [x: string]: number[]; [x: number]: number[]; };"</span>
+inspect({a: <span class="hljs-string">'string | number'</span>, b: <span class="hljs-string">'boolean'</span>}); <span class="hljs-comment">// {a: "string | number", b: "boolean"}</span></code></pre>
+				<p><code>inspectWithPreamble</code> HOF returning <code>inspect</code> with code to be executed beforehand.
+				The inspect is still the same function: can take object or string.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> inspectWithFoo = inspectWithPreamble(<span class="hljs-string">'const foo = 2'</span>);
-inspectWithFoo(<span class="hljs-string">'typeof foo'</span>); <span class="hljs-comment">// "2"</span></code></pre>
-				<p><code>inspectObjectWithPreamble</code> inspects multiple types, but allows extra code to be executed beforehand</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> inspectWithFoo = inspectObjectWithPreamble(<span class="hljs-string">'const foo = 2'</span>);
-inspectWithFoo({foo: <span class="hljs-string">'typeof foo'</span>}); <span class="hljs-comment">// { foo: "2" }</span></code></pre>
+inspectWithFoo(<span class="hljs-string">'typeof foo'</span>); <span class="hljs-comment">// "2"</span>
+inspectWithFoo({ foo: <span class="hljs-string">'typeof foo'</span> }); <span class="hljs-comment">// { foo: "2" }</span></code></pre>
 				<h3 id="options-functions">Options functions</h3>
 				<p><code>getOptions</code> to see what you are working with</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> opts = getOptions();
@@ -114,13 +112,13 @@ inspectWithFoo({foo: <span class="hljs-string">'typeof foo'</span>}); <span clas
 // opts contain current options</code></pre>
 				<h2 id="advanced-usage">Advanced usage</h2>
 				<p>You can self-reference your types</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> res = inspectObject({
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> res = inspect({
     a: <span class="hljs-string">'string'</span>,
     b: <span class="hljs-string">'a | Promise&lt;a&gt;'</span>,
 });
 <span class="hljs-comment">// res: { a: "string", b: "string | Promise&lt;string&gt;" }</span></code></pre>
 				<p>You can import your types and all imports, or even put any amount of valid code into preamble.</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> myInspect = inspectObjectWithPreamble(<span class="hljs-string">`
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> myInspect = inspectWithPreamble(<span class="hljs-string">`
 import { foo } from 'bar'; // foo = 1 + 1
 const ans = () =&gt; 42;
 const ran = 'foo'.toUpperCase();

@@ -72,15 +72,11 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_inspect_.html#inspect" class="tsd-kind-icon">inspect</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_inspect_.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_inspect_.html#myinspect" class="tsd-kind-icon">my<wbr>Inspect</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_inspect_.html#res" class="tsd-kind-icon">res</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_inspect_.html#inspectobjectwithpreamble" class="tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_inspect_.html#inspectwithpreamble" class="tsd-kind-icon">inspect<wbr>With<wbr>Preamble</a></li>
 							</ul>
 						</section>
@@ -95,7 +91,7 @@
 					<div class="tsd-signature tsd-kind-icon">inspect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;inspectWithPreamble(&#x27;&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L114">inspect.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/grissius/intspector/blob/a0fd4aa/src/lib/inspect.ts#L92">inspect.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -107,8 +103,14 @@
 							<dt>example</dt>
 							<dd><pre><code class="language-typescript">inspect(<span class="hljs-string">'Record&lt;keyof any, Array&lt;number&gt;&gt;'</span>); <span class="hljs-comment">// "{ [x: string]: number[]; [x: number]: number[]; };"</span></code></pre>
 							</dd>
+							<dt>example</dt>
+							<dd><pre><code class="language-typescript">inspect({a: <span class="hljs-string">'string | number'</span>, b: <span class="hljs-string">'boolean'</span>}); <span class="hljs-comment">// {a: "string | number", b: "boolean"}</span></code></pre>
+							</dd>
 							<dt>function</dt>
 							<dd><p><code>string -&gt; string</code></p>
+							</dd>
+							<dt>function</dt>
+							<dd><p><code>Record&lt;string, string&gt; -&gt; Record&lt;string, string&gt;</code></p>
 							</dd>
 							<dt>param</dt>
 							<dd><p>TypeScript type expression, e.g. <code>typeof Math.random()</code></p>
@@ -119,106 +121,9 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="inspectobject" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object</h3>
-					<div class="tsd-signature tsd-kind-icon">inspect<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;inspectObjectWithPreamble(&#x27;&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L100">inspect.ts:100</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Same as <code>inspect</code>, but accepts an object of types.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>see</dt>
-							<dd><p><a href="_inspect_.html#inspect">inspect</a></p>
-							</dd>
-							<dt>example</dt>
-							<dd><pre><code class="language-typescript">inspectObject({a: <span class="hljs-string">'string | number'</span>, b: <span class="hljs-string">'boolean'</span>}); <span class="hljs-comment">// {a: "string | number", b: "boolean"}</span></code></pre>
-							</dd>
-							<dt>function</dt>
-							<dd><p><code>Record&lt;string, string&gt; -&gt; Record&lt;string, string&gt;</code></p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>Object with values of TypeScript type expression</p>
-							</dd>
-							<dt>returns</dt>
-							<dd><p>Object of resolved TypeScript types</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="myinspect" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> my<wbr>Inspect</h3>
-					<div class="tsd-signature tsd-kind-icon">my<wbr>Inspect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> =&nbsp;inspectObjectWithPreamble(&#x60;const ans &#x3D; () &#x3D;&gt; 42;const ran &#x3D; &#x27;foo&#x27;.toUpperCase();type Complex &#x3D; { r: number; i: number };&#x60;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L116">inspect.ts:116</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="res" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> res</h3>
-					<div class="tsd-signature tsd-kind-icon">res<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;myInspect({fooRes: &#x27;ReturnType&lt;typeof ans&gt;&#x27;,typeOfRan: &#x27;typeof ran&#x27;,real: &quot;Pick&lt;Complex, &#x27;r&#x27;&gt;&quot;,})</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L120">inspect.ts:120</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-						</ul>
-					</div>
-				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="inspectobjectwithpreamble" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>Object<wbr>With<wbr>Preamble</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble&lt;T&gt;<span class="tsd-signature-symbol">(</span>preamble<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L69">inspect.ts:69</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Same as <code>inspectObject</code>, but with additional step of adding a code before the type resolution.</p>
-								</div>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>preamble: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>TypeScript code to be prepended</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
-							<p><code>Record&lt;string, string&gt; -&gt; Record&lt;string, string&gt;</code> an <code>inspectObject</code> function with prepended code</p>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="inspectwithpreamble" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> inspect<wbr>With<wbr>Preamble</h3>
@@ -229,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/grissius/intspector/blob/aa0f377/src/lib/inspect.ts#L85">inspect.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/grissius/intspector/blob/a0fd4aa/src/lib/inspect.ts#L22">inspect.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -249,7 +154,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
-							<p><code>string -&gt; string</code> an <code>inspect</code> function with prepended code</p>
+							<p><code>Record&lt;string, string&gt; -&gt; Record&lt;string, string&gt;</code> an <code>inspectObject</code> function with prepended code</p>
 						</li>
 					</ul>
 				</section>
@@ -273,18 +178,6 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_inspect_.html#inspect" class="tsd-kind-icon">inspect</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="_inspect_.html#inspectobject" class="tsd-kind-icon">inspect<wbr>Object</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_inspect_.html#myinspect" class="tsd-kind-icon">my<wbr>Inspect</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_inspect_.html#res" class="tsd-kind-icon">res</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_inspect_.html#inspectobjectwithpreamble" class="tsd-kind-icon">inspect<wbr>Object<wbr>With<wbr>Preamble</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_inspect_.html#inspectwithpreamble" class="tsd-kind-icon">inspect<wbr>With<wbr>Preamble</a>
