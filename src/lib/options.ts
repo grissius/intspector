@@ -18,7 +18,7 @@ function convertConfigToCompilerOptions(opts: {
             // will use ParseConfigHost to collect files in containing folder
             files: [],
         },
-        {} as any,
+        ts.sys,
         ''
     );
     // Remove the following error:
@@ -56,9 +56,7 @@ export const setOptions = (
     );
     const parsedConfig = convertConfigToCompilerOptions(config);
     if (error !== undefined) {
-        const message = `TS${error.code}: ${error.file}:${error.start} ${
-            error.messageText
-        }`;
+        const message = `TS${error.code}: ${error.file}:${error.start} ${error.messageText}`;
         throw new Error(message);
     }
     options = { ...parsedConfig, ...input };
