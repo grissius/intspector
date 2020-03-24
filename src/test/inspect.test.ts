@@ -1,4 +1,4 @@
-import { inspect, inspectWithPreamble } from 'index';
+import { inspect, inspectWithPreamble } from '..';
 
 describe('inspect', () => {
     describe('inspectObjectCore', () => {
@@ -27,7 +27,7 @@ describe('inspect', () => {
         });
         test('Import', () => {
             const types = inspectWithPreamble(
-                "import { inspect } from 'index';"
+                "import { inspect } from '../index';"
             )({
                 res: 'typeof inspect',
             });
@@ -35,7 +35,7 @@ describe('inspect', () => {
         });
         test('Bad import', () => {
             expect(() =>
-                inspectWithPreamble("import { foo } from 'blah';")({
+                inspectWithPreamble("import { foo } from './blah';")({
                     res: 'typeof foo',
                 })
             ).toThrow();
