@@ -1,3 +1,5 @@
+import stack from 'callsites';
+import * as path from 'path';
 import * as ts from 'typescript';
 import { getOptions } from './options';
 
@@ -35,6 +37,14 @@ export const createInlineProgram = (code: string) => {
         ...compilerHost,
         getSourceFile,
     };
-    const program = ts.createProgram([FILENAME], options, customCompilerHost);
+
+    let filepath = FILENAME;
+    // index 2 is level (3 up in stack) where `inspect` function is called from
+    const callerFile = stack()[2]?.getFileName();
+    if (callerFile) {
+        filepath = path.resolve(path.dirname(callerFile), FILENAME);
+    }
+
+    const program = ts.createProgram([filepath], options, customCompilerHost);
     return { program, inlineSourceFile };
 };
